@@ -1,0 +1,604 @@
+<!--<form class="">-->
+<div class="padding-form">
+
+  <span class="data-span-titulo">RE/SAP/DP/07</span>
+  <h3 class="center-align color-plomo-claro " >DOTACION DE PERSONAL</h3>
+  <h4 class="center-align color-plomo-claro " >FORMULARIO ÚNICO DE POSTULACIÓN</h4>
+  <h6>Por favor escriba con letra tipo imprenta la información que se solicita en el presente formulario (SOLAMENTE SE PODRA POSTULAR A UN CARGO POR FORMULARIO)</h6>
+  <div class="row">
+    <mat-form-field class="col s4">
+      <input matInput placeholder="No de Referencia" [formControl]="nroRefenciaControl" [(ngModel)]="txtNroReferencia">
+      <button mat-button *ngIf="txtNroReferencia" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtNroReferencia=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="nroRefenciaControl.hasError('required')">
+        El campo N° referencia es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s5">
+      <input matInput placeholder="Nombre del Cargo al que postula" [formControl]="nomCargoControl"
+             [(ngModel)]="txtNomCargoPostulacion">
+      <button mat-button *ngIf="txtNomCargoPostulacion" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtNomCargoPostulacion=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="nomCargoControl.hasError('required')">
+        El nombre del cargo al que postula es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s3">
+      <input matInput placeholder="Departamento/Ciudad" [formControl]="depCiudadControl"
+             [(ngModel)]="txtDepartamentoCiudad">
+      <button mat-button *ngIf="txtDepartamentoCiudad" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtDepartamentoCiudad=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="depCiudadControl.hasError('required')">
+        Departamento/Ciudad es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <h5 class="center-align color-plomo-claro">I. DATOS GENERALES DEL POSTULANTE</h5>
+  <div class="row">
+    <div class="row">
+      <mat-form-field class="col s3">
+        <input matInput placeholder="Apellido Paterno" [formControl]="apPaternoControl"
+               [(ngModel)]="txtApellidoPaterno">
+        <button mat-button *ngIf="txtApellidoPaterno" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtApellidoPaterno=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="apPaternoControl.hasError('required')">
+          El apellido paterno es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s3">
+        <input matInput placeholder="Apellido Materno" [formControl]="apMaternoControl" [(ngModel)]="txtApMaterno">
+        <button mat-button *ngIf="txtApMaterno" matSuffix mat-icon-button aria-label="Clear" (click)="txtApMaterno=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="apMaternoControl.hasError('required')">
+          El apellido materno es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s6">
+        <input matInput placeholder="Nombres" [formControl]="nombresControl" [(ngModel)]="txtNombres">
+        <button mat-button *ngIf="txtNombres" matSuffix mat-icon-button aria-label="Clear" (click)="txtNombres=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="nombresControl.hasError('required')">
+          Los nombres son <strong>requeridos</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col s2">
+        <input matInput [matDatepicker]="picker" placeholder="Fecha Nacimiento" [formControl]="fechaNacControl"
+               [(ngModel)]="txtFechaNacimiento">
+        <button mat-button *ngIf="txtFechaNacimiento" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtFechaNacimiento=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="fechaNacControl.hasError('required')">
+          Fecha de Nacimiento es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s2">
+        <input matInput placeholder="Nacionalidad" [formControl]="nacionalidadControl" [(ngModel)]="txtNacionalidad">
+        <button mat-button *ngIf="txtNacionalidad" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtNacionalidad=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="nacionalidadControl.hasError('required')">
+          Nacionalidad es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s8">
+        <input matInput placeholder="Domicilio actual" [formControl]="domActualControl"
+               [(ngModel)]="txtDomicilioActual">
+        <button mat-button *ngIf="txtDomicilioActual" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtDomicilioActual=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="domActualControl.hasError('required')">
+          Domicilio Actual es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col s2">
+        <input matInput placeholder="CI" [formControl]="ciControl" [(ngModel)]="txtCI">
+        <button mat-button *ngIf="txtCI" matSuffix mat-icon-button aria-label="Clear" (click)="txtCI=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="ciControl.hasError('required')">
+          CI es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s1">
+        <input matInput placeholder="Expedido" [formControl]="expedidoControl" [(ngModel)]="txtExpedido">
+        <button mat-button *ngIf="txtApellidoPaterno" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtApellidoPaterno=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="expedidoControl.hasError('required')">
+          Expedido es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s2">
+        <input matInput placeholder="Ciudad de Residencia" [formControl]="ciudadResidenciaControl"
+               [(ngModel)]="txtCiudadResidencia">
+        <button mat-button *ngIf="txtCiudadResidencia" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtCiudadResidencia=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="ciudadResidenciaControl.hasError('required')">
+          Ciudad Residencia es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s3">
+        <input matInput placeholder="Telefono Domicilio" [formControl]="telDomControl"
+               [(ngModel)]="txtTelefonoDomicilio">
+        <button mat-button *ngIf="txtTelefonoDomicilio" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtTelefonoDomicilio=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="telDomControl.hasError('required')">
+          Telefono Domicilio es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s3">
+        <input matInput placeholder="Telefono Celular" [formControl]="telCelControl" [(ngModel)]="txtTelefonoCelular">
+        <button mat-button *ngIf="txtTelefonoCelular" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtTelefonoCelular=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="telCelControl.hasError('required')">
+          Telefono Celular es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s1">
+        <mat-select placeholder="Género" [(ngModel)]="txtGenero" [formControl]="generoControl">
+          <mat-option value="M">M</mat-option>
+          <mat-option value="F">F</mat-option>
+        </mat-select>
+        <mat-error *ngIf="generoControl.hasError('required')">
+          Género es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <h5 class="center-align color-plomo-claro">II INFORMACIÓN SOBRE LA FORMACIÓN ACADÉMICA </h5>
+  <h5 class="color-plomo-claro">II I Máximo nivel académico alcanzado </h5>
+  <div class="row">
+    <div class="row">
+      <mat-form-field class="col s3">
+        <input matInput placeholder="Nivel Académico" [formControl]="nivAcademControl" [(ngModel)]="txtNivelAcademico">
+        <button mat-button *ngIf="txtNivelAcademico" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtNivelAcademico=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="nivAcademControl.hasError('required')">
+          Nivel Académico es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s3">
+        <input matInput placeholder="N° Registro Profesional" [formControl]="numRegProfControl"
+               [(ngModel)]="txtNumRegProfesional">
+        <button mat-button *ngIf="txtNumRegProfesional" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtNumRegProfesional=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="numRegProfControl.hasError('required')">
+          N° Registro Profesional es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col s5">
+        <input matInput placeholder="Universidad/Institución" [formControl]="univInstitControl"
+               [(ngModel)]="txtUniversidadInstitucion">
+        <button mat-button *ngIf="txtUniversidadInstitucion" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtUniversidadInstitucion=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="univInstitControl.hasError('required')">
+          Universidad/Institución es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col s6">
+        <input matInput placeholder="Nombre del Programa de Estudios" [formControl]="nomProgEstControl"
+               [(ngModel)]="txtNomProgEstudios">
+        <button mat-button *ngIf="txtNomProgEstudios" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtNomProgEstudios=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="nomProgEstControl.hasError('required')">
+          Nombre Programa de Estudios es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <h5 class="color-plomo-claro">II.II Formación Académica</h5>
+
+  <div class="row">
+    <div class="row">
+      <mat-form-field class="col s3">
+        <input matInput [matDatepicker]="desdePicker" placeholder="Desde" [formControl]="fechaDesdeGridControl"
+               [(ngModel)]="txtFechaDesde">
+        <button mat-button *ngIf="txtFechaDesde" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtFechaDesde=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-datepicker-toggle matSuffix [for]="desdePicker"></mat-datepicker-toggle>
+        <mat-datepicker #desdePicker></mat-datepicker>
+        <mat-error *ngIf="fechaDesdeGridControl.hasError('required')">
+          Fecha Desde es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s3">
+        <input matInput [matDatepicker]="hastaPicker" placeholder="Hasta" [formControl]="fechaHastaGridControl"
+               [(ngModel)]="txtFechaHasta">
+        <button mat-button *ngIf="txtFechaHasta" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtFechaHasta=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-datepicker-toggle matSuffix [for]="hastaPicker"></mat-datepicker-toggle>
+        <mat-datepicker #hastaPicker></mat-datepicker>
+        <mat-error *ngIf="fechaHastaGridControl.hasError('required')">
+          Fecha de Nacimiento es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s4">
+        <mat-select placeholder="Nivel Formación Académica" [(ngModel)]="txtNivFormAcademica"
+                    [formControl]="nivForAcademControl" (ngModelChange)="cambiarDato()">
+          <mat-option value="1">Doctorado</mat-option>
+          <mat-option value="2">Maestria</mat-option>
+          <mat-option value="3">Postgrado</mat-option>
+          <mat-option value="4">Diplomado</mat-option>
+          <mat-option value="5">Especialización</mat-option>
+          <mat-option value="6">Licenciatura</mat-option>
+          <mat-option value="7">Técnico Superior</mat-option>
+          <mat-option value="8">Técnico Medio</mat-option>
+          <mat-option value="9">Conclusión Plan de Estudios Universitarios</mat-option>
+        </mat-select>
+        <mat-error *ngIf="nivForAcademControl.hasError('required')">
+          Nivel de Formación Académica es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field *ngIf="bolMostrarTituloObtenido" class="col s2">
+        <mat-select placeholder="Titulo Obtenido" [(ngModel)]="txtTituloObtenido"
+                    [formControl]="ctrlTitObtenido">
+          <mat-option value="ACADÉMICO">ACADÉMICO</mat-option>
+          <mat-option value="PROVISIÓN NACIONAL">PROVISIÓN NACIONAL</mat-option>
+        </mat-select>
+        <mat-error *ngIf="ctrlTitObtenido.hasError('required')">
+          Titulo Obtenido es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col s4">
+        <input matInput placeholder="Universidad - Centro de Estudios" [formControl]="univCentEstudiosControl"
+               [(ngModel)]="txtUnivCentroEstudios">
+        <button mat-button *ngIf="txtUnivCentroEstudios" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtUnivCentroEstudios=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="univCentEstudiosControl.hasError('required')">
+          Nombre Programa de Estudios es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s4">
+        <input matInput placeholder="Nombre Programa de Estudios" [formControl]="nomProgEstudiosGrid"
+               [(ngModel)]="txtNomProgEstudiosGrid">
+        <button mat-button *ngIf="txtNomProgEstudiosGrid" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtNomProgEstudiosGrid=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="nomProgEstudiosGrid.hasError('required')">
+          Nombre Programa de Estudios es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s2">
+        <mat-select placeholder="Titulado" [(ngModel)]="txtTitulado" [formControl]="tituladoGrid">
+          <mat-option value="SI">SI</mat-option>
+          <mat-option value="NO">NO</mat-option>
+        </mat-select>
+        <mat-error *ngIf="tituladoGrid.hasError('required')">
+          Género es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <button mat-fab (click)="addNiv()" class="color-verde-oscuro">
+        <mat-icon aria-label="Añadir lista">add</mat-icon>
+      </button>
+    </div>
+
+  </div>
+  <h5 class="center-align color-plomo-claro">Nivel Doctorado (D) y/o Maestria (M)* Colocar en el recuadro la inicial correspondiente</h5>
+  <div class="row">
+    <table cdk-table [dataSource]="dataSource">
+      <ng-container cdkColumnDef="desdeFecha">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">DESDE</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.desdeFecha}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="hastaFecha" >
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">HASTA</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.hastaFecha}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="univCentEstudio">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">UNIVERSIDAD - CENTRO DE ESTUDIOS</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.univCentEstudio}} <span class="data-span">{{elem.nivel}}</span></td>
+      </ng-container>
+      <ng-container cdkColumnDef="nombreProgramaEstudio">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">NOMBRE PROGRAMA DE ESTUDIOS</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.nombreProgramaEstudio}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="titulo">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">TITULADO</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.titulo}}</td>
+      </ng-container>
+      <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <h5 class="center-align color-plomo-claro">Nivel de Postgrado(P), Diplomado (D) o especializacion (E) **</h5>
+  <div class="row">
+    <table cdk-table [dataSource]="dataSourceDiploMadoEspec">
+      <ng-container cdkColumnDef="desdeFecha">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">DESDE</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.desdeFecha}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="hastaFecha">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">HASTA</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.hastaFecha}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="univCentEstudio">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">UNIVERSIDAD - CENTRO DE ESTUDIOS</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.univCentEstudio}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="nombreProgramaEstudio">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">NOMBRE PROGRAMA DE ESTUDIOS</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.nombreProgramaEstudio}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="titulo">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">TITULADO</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.titulo}}</td>
+      </ng-container>
+      <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <h5 class="center-align color-plomo-claro">Nivel Licenciatura (L) y/o Tecnico Superior  (TS) o  Medio (TM)* Colocar en el recuadro la inicial correspondiente</h5>
+  <div class="row">
+    <table cdk-table [dataSource]="dataSourceLicTec">
+      <ng-container cdkColumnDef="desdeFecha">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">DESDE</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.desdeFecha}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="hastaFecha">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">HASTA</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.hastaFecha}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="univCentEstudio">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">UNIVERSIDAD - CENTRO DE ESTUDIOS</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.univCentEstudio}} <span class="data-span">{{elem.nivel}}</span></td>
+      </ng-container>
+      <ng-container cdkColumnDef="nombreProgramaEstudio">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">NOMBRE PROGRAMA DE ESTUDIOS</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.nombreProgramaEstudio}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="tituloObtenido">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">TITULO OBTENIDO</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.tituloObtenido}}</td>
+      </ng-container>
+      <tr cdk-header-row *cdkHeaderRowDef="displayedColumnsLicTM"></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: displayedColumnsLicTM;"></tr>
+    </table>
+  </div>
+  <h5 class="center-align color-plomo-claro">Conclusión del plan de estudios universitarios</h5>
+  <div class="row">
+    <table cdk-table [dataSource]="dataSourcePlanEstudios">
+      <ng-container cdkColumnDef="desdeFecha">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">DESDE</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.desdeFecha}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="hastaFecha">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">HASTA</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.hastaFecha}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="univCentEstudio">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">UNIVERSIDAD - CENTRO DE ESTUDIOS</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.univCentEstudio}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="nombreProgramaEstudio">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">NOMBRE PROGRAMA DE ESTUDIOS</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.nombreProgramaEstudio}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="titulo">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">CERTIFICADO</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.titulo}}</td>
+      </ng-container>
+      <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <h5 class="center-align color-plomo-claro">III. CURSOS DE ACTUALIZACION PROFESIONAL (Los mas importantes en su area de acción)</h5>
+  <div class="row">
+    <mat-form-field class="col s2">
+      <input matInput [matDatepicker]="desdePickerCursoAct" placeholder="Desde" [formControl]="desdeCursosActControl"
+             [(ngModel)]="txtDesdeCursosAct">
+      <button mat-button *ngIf="txtDesdeCursosAct" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtDesdeCursosAct=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-datepicker-toggle matSuffix [for]="desdePickerCursoAct"></mat-datepicker-toggle>
+      <mat-datepicker #desdePickerCursoAct></mat-datepicker>
+      <mat-error *ngIf="desdeCursosActControl.hasError('required')">
+        Fecha Desde es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s2">
+      <input matInput [matDatepicker]="hastaPickerCursoAct" placeholder="Hasta" [formControl]="hastaCursosActControl"
+             [(ngModel)]="txtHastaCursosAct">
+      <button mat-button *ngIf="txtHastaCursosAct" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtHastaCursosAct=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-datepicker-toggle matSuffix [for]="hastaPickerCursoAct"></mat-datepicker-toggle>
+      <mat-datepicker #hastaPickerCursoAct></mat-datepicker>
+      <mat-error *ngIf="hastaCursosActControl.hasError('required')">
+        Fecha Hasta es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s3">
+      <input matInput placeholder="Universidad - Institución" [formControl]="universidadInstitCursActControl"
+             [(ngModel)]="txtUniversidadInstitCursAct">
+      <button mat-button *ngIf="txtUniversidadInstitCursAct" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtUniversidadInstitCursAct=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="universidadInstitCursActControl.hasError('required')">
+        Nombre Universidad - Institución es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s3">
+      <input matInput placeholder="Nombre del Curso" [formControl]="bombreCursosActControl"
+             [(ngModel)]="txtNombreCursosAct">
+      <button mat-button *ngIf="txtNombreCursosAct" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtNombreCursosAct=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="bombreCursosActControl.hasError('required')">
+        Nombre Programa de Estudios es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s1">
+      <input matInput placeholder="N° de Horas" [formControl]="numHorasActControl" type="number"
+             [(ngModel)]="txtNumHorasAct">
+      <button mat-button *ngIf="txtNumHorasAct" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtNumHorasAct=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="numHorasActControl.hasError('required')">
+        Numero Horas es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <button mat-fab (click)="addCurAct()" class="color-verde-oscuro">
+      <mat-icon aria-label="Añadir lista">add</mat-icon>
+    </button>
+  </div>
+  <h5 class="color-plomo-claro">Cursos con una duración mayor a 8 horas relacionados con el cargo al que postula*</h5>
+  <div class="row">
+    <table cdk-table [dataSource]="dataSourceCursosActoProfesional">
+      <ng-container cdkColumnDef="desde">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">DESDE</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.desde}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="hasta">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">HASTA</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.hasta}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="univInstituc">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">UNIVERSIDAD - INSTITUCION</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.univInstituc}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="nomPuesto">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">NOMBRE DEL CURSO</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.nomPuesto}}</td>
+      </ng-container>
+      <ng-container cdkColumnDef="numHoras">
+        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">N° HORAS</th>
+        <td cdk-cell *cdkCellDef="let elem"> {{elem.numHoras}}</td>
+      </ng-container>
+      <tr cdk-header-row *cdkHeaderRowDef="displaycolumnsActProf"></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: displaycolumnsActProf;"></tr>
+    </table>
+  </div>
+  <!--</form>-->
+  <h5 class="center-align color-plomo-claro">IV. EXPERIENCIA LABORAL GENERAL</h5>
+  <h5 class="center-align color-plomo-claro">IV.I  Experiencia Laboral General *</h5>
+  <div class="row">
+      <mat-form-field class="col s7">
+        <input matInput placeholder="Total años de experiencia laboral general (numerico)" type="number" [formControl]="universidadInstitCursActControl"
+               [(ngModel)]="txtTotalAniosLaboral" readonly>
+        <button mat-button *ngIf="txtTotalAniosLaboral" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtTotalAniosLaboral=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="universidadInstitCursActControl.hasError('required')">
+          Nombre Universidad - Institución es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+  </div>
+  <h6>En este punto debe mencionar su experiencia de trabajo, en orden descendente comience con lo mas reciente, las mismas que deberán estar respaldadas obligatoriamente con fotocopia del certificado de trabajo o contrato de trabajo.</h6>
+  <div class="row">
+    <mat-form-field class="col s2">
+      <input matInput [matDatepicker]="desdePickerExpLab" placeholder="Desde" [formControl]="desdeExpLab"
+             [(ngModel)]="txtDesdeExpLab">
+      <button mat-button *ngIf="txtDesdeExpLab" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtDesdeExpLab=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-datepicker-toggle matSuffix [for]="desdePickerExpLab"></mat-datepicker-toggle>
+      <mat-datepicker #desdePickerExpLab></mat-datepicker>
+      <mat-error *ngIf="desdeExpLab.hasError('required')">
+        Fecha Desde es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s2">
+      <input matInput [matDatepicker]="hastaPickerExpLab" placeholder="Hasta" [formControl]="hastaExpLab"
+             [(ngModel)]="txtHastaExpLab">
+      <button mat-button *ngIf="txtHastaExpLab" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtHastaExpLab=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-datepicker-toggle matSuffix [for]="hastaPickerExpLab"></mat-datepicker-toggle>
+      <mat-datepicker #hastaPickerExpLab></mat-datepicker>
+      <mat-error *ngIf="hastaExpLab.hasError('required')">
+        Fecha Hasta es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s3">
+      <input matInput placeholder="Empresa - Institución" [formControl]="empInstExpLab"
+             [(ngModel)]="txtEmpInstExpLab">
+      <button mat-button *ngIf="txtEmpInstExpLab" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtEmpInstExpLab=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="empInstExpLab.hasError('required')">
+        Nombre Universidad - Institución es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s2">
+      <input matInput placeholder="Cargo Entrada" [formControl]="cargoEntExpLab"
+             [(ngModel)]="txtCargoEntExpLab">
+      <button mat-button *ngIf="txtCargoEntExpLab" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtCargoEntExpLab=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="cargoEntExpLab.hasError('required')">
+        Nombre Programa de Estudios es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s2">
+      <input matInput placeholder="Cargo Salida" [formControl]="cargoSalExpLab"
+             [(ngModel)]="txtCargoSalExpLab">
+      <button mat-button *ngIf="txtCargoSalExpLab" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtCargoSalExpLab=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="cargoSalExpLab.hasError('required')">
+        Numero Horas es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <button mat-fab (click)="addCurAct()" class="color-verde-oscuro">
+      <mat-icon aria-label="Añadir lista">add</mat-icon>
+    </button>
+  </div>
+</div>
