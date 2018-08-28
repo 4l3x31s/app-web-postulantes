@@ -27,3 +27,7 @@
   <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 <button mat-button (click)="anadirData()">Click me!</button>
+
+<input type="file" (change)="onFileChanged($event)">
+<img [src]="url" />
+

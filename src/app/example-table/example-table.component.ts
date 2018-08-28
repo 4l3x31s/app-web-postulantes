@@ -27,6 +27,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./example-table.component.css']
 })
 export class ExampleTableComponent implements OnInit {
+  url;
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new ExampleDataSource();
   constructor() { }
@@ -37,6 +38,16 @@ export class ExampleTableComponent implements OnInit {
     ELEMENT_DATA.push({position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'});
     this.dataSource.addRow(ELEMENT_DATA);
   }
+  onFileChanged(event){
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (evento: ProgressEvent) => {
+      this.url = (<FileReader>evento.target).result;
+      console.log(this.url);
+    };
+    reader.readAsDataURL(file);
+  }
+
 
 }
 /**
@@ -59,5 +70,7 @@ export class ExampleDataSource extends DataSource<Object> {
     this.data.next(element);
   }
   disconnect() {}
+
+
 }
 
