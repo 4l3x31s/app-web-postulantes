@@ -6,3 +6,10 @@
   right: 0;
   background: #eee;
 }
+.image-container{
+  margin-right: 0px;
+  margin-left: auto;
+  display: flex;
+  height: 50px;
+  width: auto;
+}

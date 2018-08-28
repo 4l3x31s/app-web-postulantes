@@ -2,9 +2,10 @@
 <div class="padding-form">
 
   <span class="data-span-titulo">RE/SAP/DP/07</span>
-  <h3 class="center-align color-plomo-claro " >DOTACION DE PERSONAL</h3>
-  <h4 class="center-align color-plomo-claro " >FORMULARIO ÚNICO DE POSTULACIÓN</h4>
-  <h6>Por favor escriba con letra tipo imprenta la información que se solicita en el presente formulario (SOLAMENTE SE PODRA POSTULAR A UN CARGO POR FORMULARIO)</h6>
+  <h3 class="center-align color-plomo-claro ">DOTACION DE PERSONAL</h3>
+  <h4 class="center-align color-plomo-claro ">FORMULARIO ÚNICO DE POSTULACIÓN</h4>
+  <h6>Por favor escriba con letra tipo imprenta la información que se solicita en el presente formulario (SOLAMENTE SE
+    PODRA POSTULAR A UN CARGO POR FORMULARIO)</h6>
   <div class="row">
     <mat-form-field class="col s4">
       <input matInput placeholder="No de Referencia" [formControl]="nroRefenciaControl" [(ngModel)]="txtNroReferencia">
@@ -174,56 +175,71 @@
   <h5 class="center-align color-plomo-claro">II INFORMACIÓN SOBRE LA FORMACIÓN ACADÉMICA </h5>
   <h5 class="color-plomo-claro">II I Máximo nivel académico alcanzado </h5>
   <div class="row">
-    <div class="row">
-      <mat-form-field class="col s3">
-        <input matInput placeholder="Nivel Académico" [formControl]="nivAcademControl" [(ngModel)]="txtNivelAcademico">
-        <button mat-button *ngIf="txtNivelAcademico" matSuffix mat-icon-button aria-label="Clear"
-                (click)="txtNivelAcademico=''">
-          <mat-icon>close</mat-icon>
-        </button>
-        <mat-error *ngIf="nivAcademControl.hasError('required')">
-          Nivel Académico es <strong>requerido</strong>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="col s3">
-        <input matInput placeholder="N° Registro Profesional" [formControl]="numRegProfControl"
-               [(ngModel)]="txtNumRegProfesional">
-        <button mat-button *ngIf="txtNumRegProfesional" matSuffix mat-icon-button aria-label="Clear"
-                (click)="txtNumRegProfesional=''">
-          <mat-icon>close</mat-icon>
-        </button>
-        <mat-error *ngIf="numRegProfControl.hasError('required')">
-          N° Registro Profesional es <strong>requerido</strong>
-        </mat-error>
-      </mat-form-field>
+    <div class="col s6">
+      <div class="row">
+        <div class="row">
+          <mat-form-field class="col s6">
+            <input matInput placeholder="Nivel Académico" [formControl]="nivAcademControl"
+                   [(ngModel)]="txtNivelAcademico">
+            <button mat-button *ngIf="txtNivelAcademico" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="txtNivelAcademico=''">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="nivAcademControl.hasError('required')">
+              Nivel Académico es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="col s6">
+            <input matInput placeholder="N° Registro Profesional" [formControl]="numRegProfControl"
+                   [(ngModel)]="txtNumRegProfesional">
+            <button mat-button *ngIf="txtNumRegProfesional" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="txtNumRegProfesional=''">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="numRegProfControl.hasError('required')">
+              N° Registro Profesional es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="col s12">
+            <input matInput placeholder="Universidad/Institución" [formControl]="univInstitControl"
+                   [(ngModel)]="txtUniversidadInstitucion">
+            <button mat-button *ngIf="txtUniversidadInstitucion" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="txtUniversidadInstitucion=''">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="univInstitControl.hasError('required')">
+              Universidad/Institución es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="col s12">
+            <input matInput placeholder="Nombre del Programa de Estudios" [formControl]="nomProgEstControl"
+                   [(ngModel)]="txtNomProgEstudios">
+            <button mat-button *ngIf="txtNomProgEstudios" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="txtNomProgEstudios=''">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="nomProgEstControl.hasError('required')">
+              Nombre Programa de Estudios es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
     </div>
-    <div class="row">
-      <mat-form-field class="col s5">
-        <input matInput placeholder="Universidad/Institución" [formControl]="univInstitControl"
-               [(ngModel)]="txtUniversidadInstitucion">
-        <button mat-button *ngIf="txtUniversidadInstitucion" matSuffix mat-icon-button aria-label="Clear"
-                (click)="txtUniversidadInstitucion=''">
-          <mat-icon>close</mat-icon>
-        </button>
-        <mat-error *ngIf="univInstitControl.hasError('required')">
-          Universidad/Institución es <strong>requerido</strong>
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <div class="row">
-      <mat-form-field class="col s6">
-        <input matInput placeholder="Nombre del Programa de Estudios" [formControl]="nomProgEstControl"
-               [(ngModel)]="txtNomProgEstudios">
-        <button mat-button *ngIf="txtNomProgEstudios" matSuffix mat-icon-button aria-label="Clear"
-                (click)="txtNomProgEstudios=''">
-          <mat-icon>close</mat-icon>
-        </button>
-        <mat-error *ngIf="nomProgEstControl.hasError('required')">
-          Nombre Programa de Estudios es <strong>requerido</strong>
-        </mat-error>
-      </mat-form-field>
+    <div class="col s6">
+
+      <input type="file" (change)="onFileChanged($event)" style="display: none" #fileInput>
+      <button mat-raised-button (click)="fileInput.click()">Seleccionar Imagen</button>
+
+      <br/>
+      <img [src]="url" *ngIf="url" class="imagen-estilo"/>
+
     </div>
   </div>
+
   <h5 class="color-plomo-claro">II.II Formación Académica</h5>
 
   <div class="row">
@@ -320,14 +336,15 @@
     </div>
 
   </div>
-  <h5 class="center-align color-plomo-claro">Nivel Doctorado (D) y/o Maestria (M)* Colocar en el recuadro la inicial correspondiente</h5>
+  <h5 class="center-align color-plomo-claro">Nivel Doctorado (D) y/o Maestria (M)* Colocar en el recuadro la inicial
+    correspondiente</h5>
   <div class="row">
     <table cdk-table [dataSource]="dataSource">
       <ng-container cdkColumnDef="desdeFecha">
         <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">DESDE</th>
         <td cdk-cell *cdkCellDef="let elem"> {{elem.desdeFecha}}</td>
       </ng-container>
-      <ng-container cdkColumnDef="hastaFecha" >
+      <ng-container cdkColumnDef="hastaFecha">
         <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">HASTA</th>
         <td cdk-cell *cdkCellDef="let elem"> {{elem.hastaFecha}}</td>
       </ng-container>
@@ -374,7 +391,8 @@
       <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
-  <h5 class="center-align color-plomo-claro">Nivel Licenciatura (L) y/o Tecnico Superior  (TS) o  Medio (TM)* Colocar en el recuadro la inicial correspondiente</h5>
+  <h5 class="center-align color-plomo-claro">Nivel Licenciatura (L) y/o Tecnico Superior (TS) o Medio (TM)* Colocar en
+    el recuadro la inicial correspondiente</h5>
   <div class="row">
     <table cdk-table [dataSource]="dataSourceLicTec">
       <ng-container cdkColumnDef="desdeFecha">
@@ -428,7 +446,8 @@
       <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
-  <h5 class="center-align color-plomo-claro">III. CURSOS DE ACTUALIZACION PROFESIONAL (Los mas importantes en su area de acción)</h5>
+  <h5 class="center-align color-plomo-claro">III. CURSOS DE ACTUALIZACION PROFESIONAL (Los mas importantes en su area de
+    acción)</h5>
   <div class="row">
     <mat-form-field class="col s2">
       <input matInput [matDatepicker]="desdePickerCursoAct" placeholder="Desde" [formControl]="desdeCursosActControl"
@@ -522,23 +541,18 @@
   </div>
   <!--</form>-->
   <h5 class="center-align color-plomo-claro">IV. EXPERIENCIA LABORAL GENERAL</h5>
-  <h5 class="center-align color-plomo-claro">IV.I  Experiencia Laboral General *</h5>
+  <h5 class="center-align color-plomo-claro">IV.I Experiencia Laboral General *</h5>
   <div class="row">
-      <mat-form-field class="col s7">
-        <input matInput placeholder="Total años de experiencia laboral general (numerico)" type="number" [formControl]="universidadInstitCursActControl"
-               [(ngModel)]="txtTotalAniosLaboral" readonly>
-        <button mat-button *ngIf="txtTotalAniosLaboral" matSuffix mat-icon-button aria-label="Clear"
-                (click)="txtTotalAniosLaboral=''">
-          <mat-icon>close</mat-icon>
-        </button>
-        <mat-error *ngIf="universidadInstitCursActControl.hasError('required')">
-          Nombre Universidad - Institución es <strong>requerido</strong>
-        </mat-error>
-      </mat-form-field>
+    <mat-form-field class="col s5">
+      <input matInput placeholder="Total años de experiencia laboral general (numerico)" type="number"
+             [(ngModel)]="txtTotalAniosLaboral" readonly>
+    </mat-form-field>
   </div>
-  <h6>En este punto debe mencionar su experiencia de trabajo, en orden descendente comience con lo mas reciente, las mismas que deberán estar respaldadas obligatoriamente con fotocopia del certificado de trabajo o contrato de trabajo.</h6>
+  <h6>En este punto debe mencionar su experiencia de trabajo, en orden descendente comience con lo mas reciente, las
+    mismas que deberán estar respaldadas obligatoriamente con fotocopia del certificado de trabajo o contrato de
+    trabajo.</h6>
   <div class="row">
-    <mat-form-field class="col s2">
+    <mat-form-field class="col s3">
       <input matInput [matDatepicker]="desdePickerExpLab" placeholder="Desde" [formControl]="desdeExpLab"
              [(ngModel)]="txtDesdeExpLab">
       <button mat-button *ngIf="txtDesdeExpLab" matSuffix mat-icon-button aria-label="Clear"
@@ -551,7 +565,7 @@
         Fecha Desde es <strong>requerido</strong>
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="col s2">
+    <mat-form-field class="col s3">
       <input matInput [matDatepicker]="hastaPickerExpLab" placeholder="Hasta" [formControl]="hastaExpLab"
              [(ngModel)]="txtHastaExpLab">
       <button mat-button *ngIf="txtHastaExpLab" matSuffix mat-icon-button aria-label="Clear"
@@ -564,7 +578,7 @@
         Fecha Hasta es <strong>requerido</strong>
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="col s3">
+    <mat-form-field class="col s6">
       <input matInput placeholder="Empresa - Institución" [formControl]="empInstExpLab"
              [(ngModel)]="txtEmpInstExpLab">
       <button mat-button *ngIf="txtEmpInstExpLab" matSuffix mat-icon-button aria-label="Clear"
@@ -575,7 +589,11 @@
         Nombre Universidad - Institución es <strong>requerido</strong>
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="col s2">
+
+
+  </div>
+  <div class="row">
+    <mat-form-field class="col s3">
       <input matInput placeholder="Cargo Entrada" [formControl]="cargoEntExpLab"
              [(ngModel)]="txtCargoEntExpLab">
       <button mat-button *ngIf="txtCargoEntExpLab" matSuffix mat-icon-button aria-label="Clear"
@@ -586,7 +604,7 @@
         Nombre Programa de Estudios es <strong>requerido</strong>
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="col s2">
+    <mat-form-field class="col s3">
       <input matInput placeholder="Cargo Salida" [formControl]="cargoSalExpLab"
              [(ngModel)]="txtCargoSalExpLab">
       <button mat-button *ngIf="txtCargoSalExpLab" matSuffix mat-icon-button aria-label="Clear"
@@ -597,8 +615,438 @@
         Numero Horas es <strong>requerido</strong>
       </mat-error>
     </mat-form-field>
-    <button mat-fab (click)="addCurAct()" class="color-verde-oscuro">
+    <mat-form-field class="col s5">
+      <input matInput placeholder="Añadir Funcion" [formControl]="funcionCargoControl"
+             [(ngModel)]="txtFuncionCargo">
+      <button mat-button *ngIf="txtFuncionCargo" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtFuncionCargo=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="funcionCargoControl.hasError('required')">
+        Numero Horas es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button (click)="addFuncionesPrincipales()">
+      Añadir Cargo
+    </button>
+    <button mat-raised-button (click)="borrarFuncionesPrincipales()">
+      Borrar Los Cargos
+    </button>
+    <h6>Mencione las funciones principales del puesto, en relación al certificado o contrato de trabajo:</h6>
+    <div *ngIf="lstFuncionesPrincipales.length > 0">
+      <ul *ngFor="let item of lstFuncionesPrincipales">
+        <li>{{item}}</li>
+      </ul>
+    </div>
+    <div *ngIf="lstFuncionesPrincipales.length === 0">
+      No registro funciones principales
+    </div>
+    <br/>
+    <button mat-fab (click)="addExperienciaLaboral()" class="color-verde-oscuro">
       <mat-icon aria-label="Añadir lista">add</mat-icon>
     </button>
+  </div>
+  <div class="row" *ngFor="let item of lstExperienciaLaboralAreaEsp">
+    <table>
+      <thead>
+      <tr>
+        <th class="color-plomo-claro">DESDE</th>
+        <th class="color-plomo-claro">HASTA</th>
+        <th class="color-plomo-claro">EMPRESA - INSTITUCIÓN</th>
+        <th class="color-plomo-claro">CARGO ENTRADA</th>
+        <th class="color-plomo-claro">CARGO SALIDA</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>{{item.desde}}</td>
+        <td>{{item.hasta}}</td>
+        <td>{{item.empresaInstitucion}}</td>
+        <td>{{item.cargoEntrada}}</td>
+        <td>{{item.cargoSalida}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <h6>Mencione las funciones principales del puesto, en relación al certificado o contrato de trabajo:</h6>
+    <ul *ngFor="let item2 of item.lstFunciones">
+      <li>{{item2}}</li>
+    </ul>
+  </div>
+  <h5 class="color-plomo-claro">IV.III Experiencia en Docencia* </h5>
+  <h6 class="color-plomo-claro">En este punto se deben mencionar su experiencia como docente en diferentes
+    instituciones.</h6>
+  <div class="row">
+    <div class="row">
+
+      <mat-form-field class="col s3">
+        <input matInput placeholder="Materia" [formControl]="materiaExpDocControl" [(ngModel)]="txtMateriaExpDoc">
+        <button mat-button *ngIf="txtMateriaExpDoc" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtMateriaExpDoc=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="materiaExpDocControl.hasError('required')">
+          El campo Materia es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s4">
+        <input matInput placeholder="Universidad" [formControl]="universidadExpDocControl"
+               [(ngModel)]="txtUniversidadExpDoc">
+        <button mat-button *ngIf="txtUniversidadExpDoc" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtUniversidadExpDoc=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="universidadExpDocControl.hasError('required')">
+          El campo Universidad es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s3">
+        <input matInput placeholder="Semestre Contratación" [formControl]="semestreContratExpDocControl"
+               [(ngModel)]="txtSemestreContratExpDoc">
+        <button mat-button *ngIf="txtSemestreContratExpDoc" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtSemestreContratExpDoc=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="semestreContratExpDocControl.hasError('required')">
+          El campo N° referencia es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col s3">
+        <input matInput [matDatepicker]="desdePickerExpDoc" placeholder="Desde" [formControl]="desdeExpDocControl"
+               [(ngModel)]="txtDesdeExpDoc">
+        <button mat-button *ngIf="txtDesdeExpDoc" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtDesdeExpDoc=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-datepicker-toggle matSuffix [for]="desdePickerExpDoc"></mat-datepicker-toggle>
+        <mat-datepicker #desdePickerExpDoc></mat-datepicker>
+        <mat-error *ngIf="desdeExpDocControl.hasError('required')">
+          Fecha Desde es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s3">
+        <input matInput [matDatepicker]="hastaPickerExpDoc" placeholder="Hasta" [formControl]="hastaExpDocControl"
+               [(ngModel)]="txtHastaExpDoc">
+        <button mat-button *ngIf="txtHastaExpDoc" matSuffix mat-icon-button aria-label="Clear"
+                (click)="txtHastaExpDoc=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-datepicker-toggle matSuffix [for]="hastaPickerExpDoc"></mat-datepicker-toggle>
+        <mat-datepicker #hastaPickerExpDoc></mat-datepicker>
+        <mat-error *ngIf="hastaExpDocControl.hasError('required')">
+          Fecha Hasta es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col s3">
+        <mat-select placeholder="Titular/Suplente" [(ngModel)]="txtTitularSuplenteExpDoc"
+                    [formControl]="titularSuplenteExpDocControl">
+          <mat-option value="TITULAR">TITULAR</mat-option>
+          <mat-option value="SUPLENTE">SUPLENTE</mat-option>
+        </mat-select>
+        <mat-error *ngIf="titularSuplenteExpDocControl.hasError('required')">
+          Titular/Suplente es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <button mat-fab (click)="addExperienciaDocencia()" class="color-verde-oscuro">
+        <mat-icon aria-label="Añadir lista">add</mat-icon>
+      </button>
+    </div>
+
+  </div>
+  <div class="row">
+    <table>
+      <thead>
+      <tr>
+        <th class="color-plomo-claro">MATERIA</th>
+        <th class="color-plomo-claro">TIPO</th>
+        <th class="color-plomo-claro">UNIVERSIDAD</th>
+        <th class="color-plomo-claro">SEMESTRE CONTRATACIÓN</th>
+        <th class="color-plomo-claro">DESDE</th>
+        <th class="color-plomo-claro">HASTA</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of lstExpDocencia">
+        <td>{{item.materia}}</td>
+        <td>{{item.tipo}}</td>
+        <td>{{item.universidad}}</td>
+        <td>{{item.semestreCont}}</td>
+        <td>{{item.desde}}</td>
+        <td>{{item.hasta}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <h5 class="color-plomo-claro">V. CONOCIMIENTOS EN COMPUTACIÓN</h5>
+  <div class="row">
+    <mat-form-field class="col s4">
+      <input matInput placeholder="Paquetes de Computación" [formControl]="paqueteCompControl"
+             [(ngModel)]="txtPaqueteComp">
+      <button mat-button *ngIf="txtPaqueteComp" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtPaqueteComp=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="paqueteCompControl.hasError('required')">
+        El campo Materia es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s3">
+      <mat-select placeholder="Con Certificado" [(ngModel)]="txtConCert"
+                  [formControl]="conCertControl">
+        <mat-option value="SI">SI</mat-option>
+        <mat-option value="NO">NO</mat-option>
+      </mat-select>
+      <mat-error *ngIf="conCertControl.hasError('required')">
+        Titular/Suplente es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s2">
+      <input matInput placeholder="Conocimientos del 1 al 100%" type="number" [formControl]="nivelConocimientoControl"
+             [(ngModel)]="txtNivelConocimiento">
+      <button mat-button *ngIf="txtNivelConocimiento" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtNivelConocimiento=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="nivelConocimientoControl.hasError('required')">
+        El campo Materia es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <button mat-fab (click)="addConocimientosComp()" class="color-verde-oscuro">
+      <mat-icon aria-label="Añadir lista">add</mat-icon>
+    </button>
+  </div>
+  <div class="row">
+    <table class="col s8">
+      <thead>
+      <tr>
+        <th class="color-plomo-claro">PAQUETES DE COMPUTACIÓN</th>
+        <th class="color-plomo-claro">CON CERTIFICADO</th>
+        <th class="color-plomo-claro">CONOCIMIENTO DEL 1 AL 100 %</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of lstConocComp">
+        <td>{{item.paqComp}}</td>
+        <td>{{item.conCert}}</td>
+        <td>{{item.nivConoc}} %</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <h5 class="color-plomo-claro">VI. CONOCIMIENTO DE IDIOMAS NATIVOS Y/O EXTRANJEROS</h5>
+  <div class="row">
+    <mat-form-field class="col s3">
+      <input matInput placeholder="Idioma" [formControl]="idiomaConocControl"
+             [(ngModel)]="txtIdiomaConoc">
+      <button mat-button *ngIf="txtIdiomaConoc" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtIdiomaConoc=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="idiomaConocControl.hasError('required')">
+        El campo Idioma es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s2">
+      <input matInput placeholder="Lee 1% al 100%" [formControl]="leeConocControl"
+             [(ngModel)]="txtLeeConoc">
+      <button mat-button *ngIf="txtLeeConoc" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtLeeConoc=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="leeConocControl.hasError('required')">
+        El campo Lee es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s2">
+      <input matInput placeholder="Habla 1% al 100%" [formControl]="hablaConocControl"
+             [(ngModel)]="txtHablaConoc">
+      <button mat-button *ngIf="txtHablaConoc" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtHablaConoc=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="hablaConocControl.hasError('required')">
+        El campo Habla es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s2">
+      <input matInput placeholder="Escribe 1% al 100%" [formControl]="escribeConocControl"
+             [(ngModel)]="txtEscribeConoc">
+      <button mat-button *ngIf="txtEscribeConoc" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtEscribeConoc=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="escribeConocControl.hasError('required')">
+        El campo Escribe es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s2">
+      <mat-select placeholder="Con Certificado" [(ngModel)]="txtTieneCertConoc"
+                  [formControl]="tieneCertConocControl">
+        <mat-option value="SI">SI</mat-option>
+        <mat-option value="NO">NO</mat-option>
+      </mat-select>
+      <mat-error *ngIf="tieneCertConocControl.hasError('required')">
+        Certificado es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <button mat-fab (click)="addConocIdiomasNativos()" class="color-verde-oscuro">
+      <mat-icon aria-label="Añadir lista">add</mat-icon>
+    </button>
+  </div>
+  <div class="row">
+    <table >
+      <thead>
+      <tr>
+        <th class="color-plomo-claro">IDIOMA</th>
+        <th class="color-plomo-claro">LEE 1% AL 100%</th>
+        <th class="color-plomo-claro">HABLA 1% AL 100%</th>
+        <th class="color-plomo-claro">ESCRIBE 1% AL 100%</th>
+        <th class="color-plomo-claro">CERTIFICADO</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of lstIdiomasNativos">
+        <td>{{item.idioma}}</td>
+        <td>{{item.lee}}</td>
+        <td>{{item.habla}}</td>
+        <td>{{item.escribe}}</td>
+        <td>{{item.conCertificado}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <h5 class="color-plomo-claro">VII. REFERENCIAS PERSONALES</h5>
+  <div class="row">
+    <mat-form-field class="col s3">
+      <input matInput placeholder="Nombre y Apellido" [formControl]="nombresRefPersControl"
+             [(ngModel)]="txtNombresRefPers">
+      <button mat-button *ngIf="txtNombresRefPers" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtNombresRefPers=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="nombresRefPersControl.hasError('required')">
+        El campo Nombre y Apellido es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s3">
+      <input matInput placeholder="Empresa/Institución" [formControl]="empresaRefPersControl"
+             [(ngModel)]="txtEmpresaRefPers">
+      <button mat-button *ngIf="txtEmpresaRefPers" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtEmpresaRefPers=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="empresaRefPersControl.hasError('required')">
+        El campo Empresa/Institución es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s2">
+      <input matInput placeholder="Cargo/Puesto" [formControl]="cargoRefPersControl"
+             [(ngModel)]="txtCargoRefPers">
+      <button mat-button *ngIf="txtCargoRefPers" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtCargoRefPers=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="cargoRefPersControl.hasError('required')">
+        El campo Cargo/Puesto es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s3">
+      <input matInput placeholder="Telefonos" [formControl]="telefonosRefPersControl"
+             [(ngModel)]="txtTelefonosRefPers">
+      <button mat-button *ngIf="txtTelefonosRefPers" matSuffix mat-icon-button aria-label="Clear"
+              (click)="telefonosRefPersControl=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="paqueteCompControl.hasError('required')">
+        El campo Teléfonos es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <button mat-fab (click)="addReferenciasPersonales()" class="color-verde-oscuro">
+      <mat-icon aria-label="Añadir lista">add</mat-icon>
+    </button>
+  </div>
+  <div class="row">
+    <table >
+      <thead>
+      <tr>
+        <th class="color-plomo-claro">NOMBRE Y APELLIDO</th>
+        <th class="color-plomo-claro">EMPRESA - INSTITUCIÓN</th>
+        <th class="color-plomo-claro">CARGO/PUESTO</th>
+        <th class="color-plomo-claro">TELEFONOS</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of lstReferenciasPers">
+        <td>{{item.nombreApellido}}</td>
+        <td>{{item.empresa}}</td>
+        <td>{{item.cargo}}</td>
+        <td>{{item.telefonos}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <h5 class="color-plomo-claro">VIII. INFORMACION SOBRE SALARIOS</h5>
+  <div class="row">
+    <mat-form-field class="col s4">
+      <input matInput placeholder="Pretensión Salarial Mensual en Bs." [formControl]="pretensionSalarialControl"
+             [(ngModel)]="txtPretensionSalarial">
+      <button mat-button *ngIf="txtPretensionSalarial" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtPretensionSalarial=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="pretensionSalarialControl.hasError('required')">
+        El campo Pretensión Salarial Mensual en Bs. es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col s4">
+      <input matInput placeholder="Mensual Percibido en Bs." [formControl]="mensualPercibidoBsControl"
+             [(ngModel)]="txtMensualPercibidoBs">
+      <button mat-button *ngIf="txtMensualPercibidoBs" matSuffix mat-icon-button aria-label="Clear"
+              (click)="txtMensualPercibidoBs=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="mensualPercibidoBsControl.hasError('required')">
+        El campo Materia es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <h6 class="color-plomo-claro">* Nota: Toda la información declarada en el formulario debe contar con un respaldo documentado, de no contar con el mismo la informacion declarada no sera tomada en cuenta en la evaluacion curricular.</h6>
+  <h5 class="color-plomo-claro">IX.  DECLARACIÓN JURADA Y AUTORIZACIÓN DE VERIFICACIÓN DE INFORMACIÓN</h5>
+  <h6>Declaro que toda la informacion declarada en el presente formulario es verdadera y que estoy en condiciones de sustentarla con documentación original. Asimismo, autorizo al RUAT a realziar la verificación ante las instancias correspondientes si el caso lo requiere.</h6>
+
+
+  <h5 class="color-plomo-claro">X. INSTRUCCIONES PARA SU POSTULACIÓN</h5>
+  <div class="row">
+    El presente instructivo tiene la finalidad de establecer las recomendaciones necesarias para que todo  postulante  siga con carácter de obligatoriedad, el proceso de selección de personal  realziado por el Registro Unico Para la Adminsitracion Tributaria, de acuerdo al siguiente detalle:
+    <p></p>
+    * Cada postulante necesariamente debe presentar su solicitud de postulación, en el presente formulario (FORMULARIO UNICO DE POSTULACION), hasta la fecha  y hora establecida  en la convocatoria. (Postulaciones que se presenten fuera de plazo no serán tomadas en cuenta).
+    <p></p>
+    * Este formulario único de postulación, da la posibilidad de postular a un solo cargo, en caso de enviar un segundo formulario, el  mismo debera ser enviado en un
+    sobre diferente y con la documentacion de respaldo correspondiente.
+    <p></p>
+    * El postulante debe adjuntar al presente formulario de aplicación, la siguiente documentación de manera obligatoria.
+    <p></p>
+    * Fotocopia Cedula de Identidad, indispensable.
+    <p></p>
+    * Presentación obligatoria de documentación respaldatoria, de lo declarado en los puntos II. III, IV, V Y VI del presente formulario  (En fotocopias simples).
+    <p></p>
+    * Los postulantes que son del interior deben prever, que tanto los exámenes, como la fase de entrevistas se desarrollaran en la ciudad de La Paz, debiendo cada
+    postulante desplazarse con sus propios recuros al lugar establecido.
+    <p></p>
+    * Al finalizar el proceso, las diferentes comisiones de calificación le presentaran una lista de los postulantes elegibles al Director  Ejecutivo del RUAT, para que el
+    mismo realice la elección y designación correspondiente.
+    <p></p>
+    * Cada postulante debe entregar el formulario de aplicación debidamente llenado con la documentación respaldatoria requerida, en sobre cerrado, hasta la fecha y hora establecida en la convocatoria.
+    <p></p>
+    * El rótulo del sobre debe mencionar:
+
+
+
+    <br /><br /><br /><br />
+    * La entrega de la documentación para los diferentes cargos publicados debe ser realizada en las oficinas del RUAT ubicadas en ____________________________.
+
   </div>
 </div>

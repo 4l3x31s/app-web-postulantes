@@ -3,7 +3,12 @@ import {FormControl, Validators} from '@angular/forms';
 import {DateAdapter} from '@angular/material';
 import {ObjFormacionAcademica} from '../model/obj-formacion-academica';
 import {ServicioListasService} from '../services/servicio-listas.service';
-import {ObjCursosActProfesional} from "../model/obj-cursos-act-profesional";
+import {ObjCursosActProfesional} from '../model/obj-cursos-act-profesional';
+import {ObjExpLaboral} from '../model/obj-exp-laboral';
+import {ObjExpDocencia} from '../model/obj-exp-docencia';
+import {ObjConocComp} from '../model/obj-conoc-comp';
+import {ObjConocIdiomaNat} from '../model/obj-conoc-idioma-nat';
+import {ObjRefPersonal} from '../model/obj-ref-personal';
 
 
 @Component({
@@ -12,6 +17,7 @@ import {ObjCursosActProfesional} from "../model/obj-cursos-act-profesional";
   styleUrls: ['./formulario-postulante.component.css']
 })
 export class FormularioPostulanteComponent implements OnInit {
+
   // Controls
   txtNroReferencia;
   txtNomCargoPostulacion;
@@ -51,12 +57,36 @@ export class FormularioPostulanteComponent implements OnInit {
   txtNombreCursosAct;
   txtNumHorasAct;
   lstCursosActProfesional: ObjCursosActProfesional[] = [];
-  txtTotalAniosLaboral;
+  txtTotalAniosLaboral = 0;
   txtDesdeExpLab;
   txtHastaExpLab;
   txtEmpInstExpLab;
   txtCargoEntExpLab;
   txtCargoSalExpLab;
+  txtFuncionCargo;
+  txtMateriaExpDoc;
+  txtTitularSuplenteExpDoc;
+  txtUniversidadExpDoc;
+  txtSemestreContratExpDoc;
+  txtDesdeExpDoc;
+  txtHastaExpDoc;
+  txtPaqueteComp;
+  txtConCert;
+  txtNivelConocimiento;
+  txtIdiomaConoc;
+  txtLeeConoc;
+  txtHablaConoc;
+  txtEscribeConoc;
+  txtTieneCertConoc;
+
+  txtNombresRefPers;
+  txtEmpresaRefPers;
+  txtCargoRefPers;
+  txtTelefonosRefPers;
+
+  txtPretensionSalarial;
+  txtMensualPercibidoBs;
+
 
   nroRefenciaControl = this.validacionServ();
   nomCargoControl = this.validacionServ();
@@ -97,6 +127,31 @@ export class FormularioPostulanteComponent implements OnInit {
   empInstExpLab = this.validacionServ();
   cargoEntExpLab = this.validacionServ();
   cargoSalExpLab = this.validacionServ();
+  funcionCargoControl = this.validacionServ();
+
+  materiaExpDocControl = this.validacionServ();
+  titularSuplenteExpDocControl = this.validacionServ();
+  universidadExpDocControl = this.validacionServ();
+  semestreContratExpDocControl = this.validacionServ();
+  desdeExpDocControl = this.validacionServ();
+  hastaExpDocControl = this.validacionServ();
+
+  paqueteCompControl = this.validacionServ();
+  conCertControl = this.validacionServ();
+  nivelConocimientoControl = this.validacionServ();
+
+  idiomaConocControl = this.validacionServ();
+  leeConocControl = this.validacionServ();
+  hablaConocControl = this.validacionServ();
+  escribeConocControl = this.validacionServ();
+  tieneCertConocControl = this.validacionServ();
+  nombresRefPersControl = this.validacionServ();
+  empresaRefPersControl = this.validacionServ();
+  cargoRefPersControl = this.validacionServ();
+  telefonosRefPersControl = this.validacionServ();
+  pretensionSalarialControl = this.validacionServ();
+  mensualPercibidoBsControl = this.validacionServ();
+
 
   displayedColumns: string[] = ['desdeFecha', 'hastaFecha', 'univCentEstudio', 'nombreProgramaEstudio', 'titulo'];
   displayedColumnsLicTM: string[] = ['desdeFecha', 'hastaFecha', 'univCentEstudio', 'nombreProgramaEstudio', 'tituloObtenido'];
@@ -106,12 +161,37 @@ export class FormularioPostulanteComponent implements OnInit {
   dataSourceLicTec = new ServicioListasService(this.lstLicTecSupMedio);
   dataSourcePlanEstudios = new ServicioListasService(this.lstConcPlanEstudios);
   dataSourceCursosActoProfesional = new ServicioListasService(this.lstCursosActProfesional);
+  lstFuncionesPrincipales: string[] = [];
 
+  lstExperienciaLaboralAreaEsp: ObjExpLaboral[] = [];
+  lstExpDocencia: ObjExpDocencia[] = [];
+  lstConocComp: ObjConocComp[] = [];
+  lstIdiomasNativos: ObjConocIdiomaNat[] = [];
+  lstReferenciasPers: ObjRefPersonal[] = [];
+
+  url;
 
   constructor(private adapter: DateAdapter<any>) {
     this.valorTexto = 'valor';
     this.adapter.setLocale('es');
     this.lstFomacionDoctoradoMaestria = [ ];
+  }
+  borrarFuncionesPrincipales(){
+    this.lstFuncionesPrincipales = [];
+  }
+  addFuncionesPrincipales(){
+    this.lstFuncionesPrincipales.push(this.txtFuncionCargo);
+  }
+  addExperienciaLaboral(){
+    const fechaDesde = new Date(this.txtDesdeExpLab);
+    const fechaHasta = new Date(this.txtHastaExpLab);
+    const fechaDesdeString: string = fechaDesde.getDate() + '-' + (fechaDesde.getMonth() + 1)  + '-'
+      + fechaDesde.getFullYear();
+    const fechaHastaString: string = fechaHasta.getDate() + '-' + (fechaHasta.getMonth() + 1)  + '-'
+      + fechaHasta.getFullYear();
+    const expLaboralObj: ObjExpLaboral = new ObjExpLaboral(fechaDesdeString, fechaHastaString , this.txtEmpInstExpLab,
+      this.txtCargoEntExpLab, this.txtCargoSalExpLab, this.lstFuncionesPrincipales);
+    this.lstExperienciaLaboralAreaEsp.push(expLaboralObj);
   }
   validacionServ() {
     return new FormControl('', [
@@ -120,6 +200,42 @@ export class FormularioPostulanteComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+  addConocIdiomasNativos(){
+    const objIdiomasNativos: ObjConocIdiomaNat = new ObjConocIdiomaNat(this.txtIdiomaConoc, this.txtLeeConoc,
+      this.txtHablaConoc, this.txtEscribeConoc, this.txtTieneCertConoc);
+    this.lstIdiomasNativos.push(objIdiomasNativos);
+  }
+  addReferenciasPersonales(){
+    const objRefPersonal: ObjRefPersonal = new ObjRefPersonal(this.txtNombresRefPers, this.txtEmpresaRefPers,
+      this.txtCargoRefPers, this.txtTelefonosRefPers);
+    this.lstReferenciasPers.push(objRefPersonal);
+  }
+
+  onFileChanged(event){
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (evento: ProgressEvent) => {
+      this.url = (<FileReader>evento.target).result;
+      console.log(this.url);
+    };
+    reader.readAsDataURL(file);
+  }
+  addExperienciaDocencia(){
+    const objExpdocencia: ObjExpDocencia = new ObjExpDocencia(this.txtMateriaExpDoc, this.txtTitularSuplenteExpDoc,
+      this.txtUniversidadExpDoc, this.txtSemestreContratExpDoc, this.convertirFechas(this.txtDesdeExpDoc),
+      this.convertirFechas(this.txtHastaExpDoc));
+    this.lstExpDocencia.push(objExpdocencia);
+  }
+  addConocimientosComp(){
+    const objConocComp: ObjConocComp = new ObjConocComp(this.txtPaqueteComp, this.txtConCert, this.txtNivelConocimiento);
+    this.lstConocComp.push(objConocComp);
+  }
+  convertirFechas(fecha: string): string{
+    const fechaAConv = new Date(fecha);
+    const fechaConv: string = fechaAConv.getDate() + '-' + (fechaAConv.getMonth() + 1)  + '-'
+      + fechaAConv.getFullYear();
+    return fechaConv;
   }
   addCurAct(){
     const fechaDesde = new Date(this.txtDesdeCursosAct);
