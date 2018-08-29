@@ -183,14 +183,12 @@ export class FormularioPostulanteComponent implements OnInit {
     this.lstFuncionesPrincipales.push(this.txtFuncionCargo);
   }
   addExperienciaLaboral(){
-    const fechaDesde = new Date(this.txtDesdeExpLab);
-    const fechaHasta = new Date(this.txtHastaExpLab);
-    const fechaDesdeString: string = fechaDesde.getDate() + '-' + (fechaDesde.getMonth() + 1)  + '-'
-      + fechaDesde.getFullYear();
-    const fechaHastaString: string = fechaHasta.getDate() + '-' + (fechaHasta.getMonth() + 1)  + '-'
-      + fechaHasta.getFullYear();
-    const expLaboralObj: ObjExpLaboral = new ObjExpLaboral(fechaDesdeString, fechaHastaString , this.txtEmpInstExpLab,
-      this.txtCargoEntExpLab, this.txtCargoSalExpLab, this.lstFuncionesPrincipales);
+    let lstLocal: string[] = [];
+    lstLocal = this.lstFuncionesPrincipales;
+    const expLaboralObj: ObjExpLaboral = new ObjExpLaboral(this.convertirFechas(this.txtDesdeExpLab),
+      this.convertirFechas(this.txtHastaExpLab) , this.txtEmpInstExpLab,
+      this.txtCargoEntExpLab, this.txtCargoSalExpLab, lstLocal);
+    this.lstFuncionesPrincipales = [];
     this.lstExperienciaLaboralAreaEsp.push(expLaboralObj);
   }
   validacionServ() {
