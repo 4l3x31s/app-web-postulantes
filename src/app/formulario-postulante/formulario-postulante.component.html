@@ -338,112 +338,99 @@
   </div>
   <h5 class="center-align color-plomo-claro">Nivel Doctorado (D) y/o Maestria (M)* Colocar en el recuadro la inicial
     correspondiente</h5>
+
   <div class="row">
-    <table cdk-table [dataSource]="dataSource">
-      <ng-container cdkColumnDef="desdeFecha">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">DESDE</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.desdeFecha}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="hastaFecha">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">HASTA</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.hastaFecha}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="univCentEstudio">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">UNIVERSIDAD - CENTRO DE ESTUDIOS</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.univCentEstudio}} <span class="data-span">{{elem.nivel}}</span></td>
-      </ng-container>
-      <ng-container cdkColumnDef="nombreProgramaEstudio">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">NOMBRE PROGRAMA DE ESTUDIOS</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.nombreProgramaEstudio}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="titulo">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">TITULADO</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.titulo}}</td>
-      </ng-container>
-      <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
-      <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+    <table>
+      <thead>
+      <tr>
+        <th class="color-plomo-claro">DESDE</th>
+        <th class="color-plomo-claro">HASTA</th>
+        <th class="color-plomo-claro">UNIVERSIDAD - CENTRO DE ESTUDIOS</th>
+        <th class="color-plomo-claro">NOMBRE PROGRAMA DE ESTUDIOS</th>
+        <th class="color-plomo-claro">TITULADO</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of lstFomacionDoctoradoMaestria">
+        <td>{{item.desdeFecha}}</td>
+        <td>{{item.hastaFecha}}</td>
+        <td>{{item.univCentEstudio}} <span class="data-span">{{item.nivel}}</span></td>
+        <td>{{item.nombreProgramaEstudio}}</td>
+        <td>{{item.titulo}}</td>
+      </tr>
+      </tbody>
     </table>
   </div>
   <h5 class="center-align color-plomo-claro">Nivel de Postgrado(P), Diplomado (D) o especializacion (E) **</h5>
   <div class="row">
-    <table cdk-table [dataSource]="dataSourceDiploMadoEspec">
-      <ng-container cdkColumnDef="desdeFecha">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">DESDE</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.desdeFecha}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="hastaFecha">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">HASTA</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.hastaFecha}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="univCentEstudio">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">UNIVERSIDAD - CENTRO DE ESTUDIOS</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.univCentEstudio}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="nombreProgramaEstudio">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">NOMBRE PROGRAMA DE ESTUDIOS</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.nombreProgramaEstudio}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="titulo">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">TITULADO</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.titulo}}</td>
-      </ng-container>
-      <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
-      <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+    <table>
+      <thead>
+      <tr>
+        <th class="color-plomo-claro">DESDE</th>
+        <th class="color-plomo-claro">HASTA</th>
+        <th class="color-plomo-claro">UNIVERSIDAD - CENTRO DE ESTUDIOS</th>
+        <th class="color-plomo-claro">NOMBRE PROGRAMA DE ESTUDIOS</th>
+        <th class="color-plomo-claro">TITULADO</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of lstNivelPostgradoDiplomadoEspecializacion">
+        <td>{{item.desdeFecha}}</td>
+        <td>{{item.hastaFecha}}</td>
+        <td>{{item.univCentEstudio}} <span class="data-span">{{item.nivel}}</span></td>
+        <td>{{item.nombreProgramaEstudio}}</td>
+        <td>{{item.titulo}}</td>
+      </tr>
+      </tbody>
     </table>
   </div>
+
+
   <h5 class="center-align color-plomo-claro">Nivel Licenciatura (L) y/o Tecnico Superior (TS) o Medio (TM)* Colocar en
     el recuadro la inicial correspondiente</h5>
   <div class="row">
-    <table cdk-table [dataSource]="dataSourceLicTec">
-      <ng-container cdkColumnDef="desdeFecha">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">DESDE</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.desdeFecha}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="hastaFecha">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">HASTA</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.hastaFecha}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="univCentEstudio">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">UNIVERSIDAD - CENTRO DE ESTUDIOS</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.univCentEstudio}} <span class="data-span">{{elem.nivel}}</span></td>
-      </ng-container>
-      <ng-container cdkColumnDef="nombreProgramaEstudio">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">NOMBRE PROGRAMA DE ESTUDIOS</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.nombreProgramaEstudio}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="tituloObtenido">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">TITULO OBTENIDO</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.tituloObtenido}}</td>
-      </ng-container>
-      <tr cdk-header-row *cdkHeaderRowDef="displayedColumnsLicTM"></tr>
-      <tr cdk-row *cdkRowDef="let row; columns: displayedColumnsLicTM;"></tr>
+    <table>
+      <thead>
+      <tr>
+        <th class="color-plomo-claro">DESDE</th>
+        <th class="color-plomo-claro">HASTA</th>
+        <th class="color-plomo-claro">UNIVERSIDAD - CENTRO DE ESTUDIOS</th>
+        <th class="color-plomo-claro">NOMBRE PROGRAMA DE ESTUDIOS</th>
+        <th class="color-plomo-claro">CERTIFICADO</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of lstLicTecSupMedio">
+        <td>{{item.desdeFecha}}</td>
+        <td>{{item.hastaFecha}}</td>
+        <td>{{item.univCentEstudio}} <span class="data-span">{{item.nivel}}</span></td>
+        <td>{{item.nombreProgramaEstudio}}</td>
+        <td>{{item.tituloObtenido}}</td>
+      </tr>
+      </tbody>
     </table>
   </div>
   <h5 class="center-align color-plomo-claro">Conclusión del plan de estudios universitarios</h5>
   <div class="row">
-    <table cdk-table [dataSource]="dataSourcePlanEstudios">
-      <ng-container cdkColumnDef="desdeFecha">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">DESDE</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.desdeFecha}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="hastaFecha">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">HASTA</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.hastaFecha}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="univCentEstudio">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">UNIVERSIDAD - CENTRO DE ESTUDIOS</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.univCentEstudio}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="nombreProgramaEstudio">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">NOMBRE PROGRAMA DE ESTUDIOS</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.nombreProgramaEstudio}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="titulo">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">CERTIFICADO</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.titulo}}</td>
-      </ng-container>
-      <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
-      <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+    <table>
+      <thead>
+      <tr>
+        <th class="color-plomo-claro">DESDE</th>
+        <th class="color-plomo-claro">HASTA</th>
+        <th class="color-plomo-claro">UNIVERSIDAD - CENTRO DE ESTUDIOS</th>
+        <th class="color-plomo-claro">NOMBRE PROGRAMA DE ESTUDIOS</th>
+        <th class="color-plomo-claro">CERTIFICADO</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of lstConcPlanEstudios">
+        <td>{{item.desdeFecha}}</td>
+        <td>{{item.hastaFecha}}</td>
+        <td>{{item.univCentEstudio}}</td>
+        <td>{{item.nombreProgramaEstudio}}</td>
+        <td>{{item.titulo}}</td>
+      </tr>
+      </tbody>
     </table>
   </div>
   <h5 class="center-align color-plomo-claro">III. CURSOS DE ACTUALIZACION PROFESIONAL (Los mas importantes en su area de
@@ -514,29 +501,25 @@
   </div>
   <h5 class="color-plomo-claro">Cursos con una duración mayor a 8 horas relacionados con el cargo al que postula*</h5>
   <div class="row">
-    <table cdk-table [dataSource]="dataSourceCursosActoProfesional">
-      <ng-container cdkColumnDef="desde">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">DESDE</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.desde}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="hasta">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">HASTA</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.hasta}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="univInstituc">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">UNIVERSIDAD - INSTITUCION</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.univInstituc}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="nomPuesto">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">NOMBRE DEL CURSO</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.nomPuesto}}</td>
-      </ng-container>
-      <ng-container cdkColumnDef="numHoras">
-        <th cdk-header-cell *cdkHeaderCellDef class="color-plomo-claro">N° HORAS</th>
-        <td cdk-cell *cdkCellDef="let elem"> {{elem.numHoras}}</td>
-      </ng-container>
-      <tr cdk-header-row *cdkHeaderRowDef="displaycolumnsActProf"></tr>
-      <tr cdk-row *cdkRowDef="let row; columns: displaycolumnsActProf;"></tr>
+    <table>
+      <thead>
+      <tr>
+        <th class="color-plomo-claro">DESDE</th>
+        <th class="color-plomo-claro">HASTA</th>
+        <th class="color-plomo-claro">UNIVERSIDAD - INSTITUCION</th>
+        <th class="color-plomo-claro">NOMBRE DEL CURSO</th>
+        <th class="color-plomo-claro">N° HORAS</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of lstCursosActProfesional">
+        <td>{{item.desde}}</td>
+        <td>{{item.hasta}}</td>
+        <td>{{item.univInstituc}}</td>
+        <td>{{item.nomPuesto}}</td>
+        <td>{{item.numHoras}}</td>
+      </tr>
+      </tbody>
     </table>
   </div>
   <!--</form>-->

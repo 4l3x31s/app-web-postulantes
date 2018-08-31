@@ -34,7 +34,9 @@ import {AngularMaterialModule} from './angular-material-module';
     AngularMaterialModule
 
   ],
-  providers: [appRoutingProviders],
+  providers: [
+    appRoutingProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

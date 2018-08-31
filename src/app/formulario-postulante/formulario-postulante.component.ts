@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {DateAdapter} from '@angular/material';
 import {ObjFormacionAcademica} from '../model/obj-formacion-academica';
-import {ServicioListasService} from '../services/servicio-listas.service';
 import {ObjCursosActProfesional} from '../model/obj-cursos-act-profesional';
 import {ObjExpLaboral} from '../model/obj-exp-laboral';
 import {ObjExpDocencia} from '../model/obj-exp-docencia';
@@ -44,10 +43,7 @@ export class FormularioPostulanteComponent implements OnInit {
   txtUnivCentroEstudios;
   txtNomProgEstudiosGrid;
   txtTitulado;
-  lstFomacionDoctoradoMaestria: ObjFormacionAcademica[] = [];
-  lstNivelPostgradoDiplomadoEspecializacion: ObjFormacionAcademica[] = [];
-  lstLicTecSupMedio: ObjFormacionAcademica[] = [];
-  lstConcPlanEstudios: ObjFormacionAcademica[] = [];
+
   txtTituloObtenido;
   bolMostrarTituloObtenido = false;
   valorTexto;
@@ -56,7 +52,7 @@ export class FormularioPostulanteComponent implements OnInit {
   txtUniversidadInstitCursAct;
   txtNombreCursosAct;
   txtNumHorasAct;
-  lstCursosActProfesional: ObjCursosActProfesional[] = [];
+
   txtTotalAniosLaboral = 0;
   txtDesdeExpLab;
   txtHastaExpLab;
@@ -152,16 +148,13 @@ export class FormularioPostulanteComponent implements OnInit {
   pretensionSalarialControl = this.validacionServ();
   mensualPercibidoBsControl = this.validacionServ();
 
-
-  displayedColumns: string[] = ['desdeFecha', 'hastaFecha', 'univCentEstudio', 'nombreProgramaEstudio', 'titulo'];
-  displayedColumnsLicTM: string[] = ['desdeFecha', 'hastaFecha', 'univCentEstudio', 'nombreProgramaEstudio', 'tituloObtenido'];
-  displaycolumnsActProf: string[] = ['desde', 'hasta', 'univInstituc', 'nomPuesto', 'numHoras'];
-  dataSource = new ServicioListasService(this.lstFomacionDoctoradoMaestria);
-  dataSourceDiploMadoEspec = new ServicioListasService(this.lstNivelPostgradoDiplomadoEspecializacion);
-  dataSourceLicTec = new ServicioListasService(this.lstLicTecSupMedio);
-  dataSourcePlanEstudios = new ServicioListasService(this.lstConcPlanEstudios);
-  dataSourceCursosActoProfesional = new ServicioListasService(this.lstCursosActProfesional);
   lstFuncionesPrincipales: string[] = [];
+
+  lstFomacionDoctoradoMaestria: ObjFormacionAcademica[] = [];
+  lstNivelPostgradoDiplomadoEspecializacion: ObjFormacionAcademica[] = [];
+  lstLicTecSupMedio: ObjFormacionAcademica[] = [];
+  lstConcPlanEstudios: ObjFormacionAcademica[] = [];
+  lstCursosActProfesional: ObjCursosActProfesional[] = [];
 
   lstExperienciaLaboralAreaEsp: ObjExpLaboral[] = [];
   lstExpDocencia: ObjExpDocencia[] = [];
@@ -169,12 +162,12 @@ export class FormularioPostulanteComponent implements OnInit {
   lstIdiomasNativos: ObjConocIdiomaNat[] = [];
   lstReferenciasPers: ObjRefPersonal[] = [];
 
+
   url;
 
   constructor(private adapter: DateAdapter<any>) {
     this.valorTexto = 'valor';
     this.adapter.setLocale('es');
-    this.lstFomacionDoctoradoMaestria = [ ];
   }
   borrarFuncionesPrincipales(){
     this.lstFuncionesPrincipales = [];
@@ -236,28 +229,15 @@ export class FormularioPostulanteComponent implements OnInit {
     return fechaConv;
   }
   addCurAct(){
-    const fechaDesde = new Date(this.txtDesdeCursosAct);
-    const fechaHasta = new Date(this.txtHastaCursosAct);
-    const fechaDesdeString: string = fechaDesde.getDate() + '-' + (fechaDesde.getMonth() + 1)  + '-'
-      + fechaDesde.getFullYear();
-    const fechaHastaString: string = fechaHasta.getDate() + '-' + (fechaHasta.getMonth() + 1)  + '-'
-      + fechaHasta.getFullYear();
     let objCuractProf: ObjCursosActProfesional;
-    objCuractProf = new ObjCursosActProfesional(fechaDesdeString, fechaHastaString
+    objCuractProf = new ObjCursosActProfesional(this.convertirFechas(this.txtDesdeCursosAct), this.convertirFechas(this.txtHastaCursosAct)
       , this.txtUniversidadInstitCursAct, this.txtNombreCursosAct, this.txtNumHorasAct);
-
     this.lstCursosActProfesional.push(objCuractProf);
-    this.dataSourceCursosActoProfesional.addRow(this.lstCursosActProfesional);
+
   }
   addNiv() {
-    const fechaDesde = new Date(this.txtFechaDesde);
-    const fechaHasta = new Date(this.txtFechaHasta);
-    const fechaDesdeString: string = fechaDesde.getDate() + '-' + (fechaDesde.getMonth() + 1)  + '-'
-      + fechaDesde.getFullYear();
-    const fechaHastaString: string = fechaHasta.getDate() + '-' + (fechaHasta.getMonth() + 1)  + '-'
-      + fechaHasta.getFullYear();
-    console.log('***************************************************');
-    console.log(fechaDesde.getDate() + '-' + (fechaDesde.getMonth() + 1)  + '-' + fechaDesde.getFullYear());
+    const fechaDesdeString: string = this.convertirFechas(this.txtFechaDesde);
+    const fechaHastaString: string = this.convertirFechas(this.txtFechaHasta);
     let objFormAcademica: ObjFormacionAcademica;
     if (this.txtNivFormAcademica === '1' || this.txtNivFormAcademica === '2') {
       const listaValor: ObjFormacionAcademica[] = this.lstFomacionDoctoradoMaestria;
@@ -268,8 +248,6 @@ export class FormularioPostulanteComponent implements OnInit {
       listaValor.push(objFormAcademica);
       this.lstFomacionDoctoradoMaestria = [];
       this.lstFomacionDoctoradoMaestria = listaValor;
-      this.dataSource.addRow(this.lstFomacionDoctoradoMaestria);
-
     } else if (this.txtNivFormAcademica === '3' || this.txtNivFormAcademica === '4' || this.txtNivFormAcademica === '5') {
       const valorTituladoBooleano: boolean = this.txtTitulado === 'SI' ? true : false;
       let datoAcad;
@@ -290,7 +268,6 @@ export class FormularioPostulanteComponent implements OnInit {
       objFormAcademica = new ObjFormacionAcademica(fechaDesdeString, fechaHastaString, this.txtUnivCentroEstudios,
         this.txtNomProgEstudiosGrid, this.txtTitulado, datoAcad, '');
       this.lstNivelPostgradoDiplomadoEspecializacion.push(objFormAcademica);
-      this.dataSourceDiploMadoEspec.addRow(this.lstNivelPostgradoDiplomadoEspecializacion);
     } else if (this.txtNivFormAcademica === '6' || this.txtNivFormAcademica === '7' || this.txtNivFormAcademica === '8') {
       let datoAcad;
       switch (this.txtNivFormAcademica) {
@@ -310,14 +287,12 @@ export class FormularioPostulanteComponent implements OnInit {
       objFormAcademica = new ObjFormacionAcademica(fechaDesdeString, fechaHastaString, this.txtUnivCentroEstudios,
         this.txtNomProgEstudiosGrid, '', datoAcad, this.txtTituloObtenido);
       this.lstLicTecSupMedio.push(objFormAcademica);
-      this.dataSourceLicTec.addRow(this.lstLicTecSupMedio);
     } else if (this.txtNivFormAcademica === '9') {
 
       const valorTituladoBooleano: boolean = this.txtTitulado === 'SI' ? true : false;
       objFormAcademica = new ObjFormacionAcademica(fechaDesdeString, fechaHastaString, this.txtUnivCentroEstudios,
         this.txtNomProgEstudiosGrid, this.txtTitulado, this.txtNivFormAcademica, '');
       this.lstConcPlanEstudios.push(objFormAcademica);
-      this.dataSourcePlanEstudios.addRow(this.lstConcPlanEstudios);
     }
     console.log(this.lstFomacionDoctoradoMaestria);
   }
